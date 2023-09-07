@@ -50,21 +50,9 @@ const slides = [
   /* Print all images into the dom */
   // loop over the slides 
 
-  /* for (let i = 0; i < slides2.length; i++) {
-    const slidePath = slides[i];
-    console.log(slidePath);
-    
-    // for each slide we create the markup
-    const slideMarkup = `<img class="${activeSlide === i ? 'active' : '' }" src="${slidePath}" alt="">`
-    //console.log(slideMarkup);
-  
-    sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
-  
-  } */
-
    const titleEl = document.getElementById('imageTitle');
     
-    console.log(titleEl);
+    //console.log(titleEl);
   
   slides.forEach(slide => {
 
@@ -77,19 +65,13 @@ const slides = [
   
     sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
 
-    console.log(slide.url);
+    //console.log(slide.url);
 
     const titleEl = document.getElementById('imageTitle');
 
     //const titleMarkup = `<h5 class="${activeSlide === slide.position ? "title-active" : "title"}>${slide.title}</h5>`
 
-    console.log(activeSlide === slide.position ? "title-active" : "title");
-
-    const titleMarkup = `<h5 class="title">${slide.title}</h5>`
-
-    console.log(titleEl);
-
-    titleEl.insertAdjacentHTML('beforeend',titleMarkup)
+   // console.log(activeSlide === slide.position ? "title-active" : "title");
 
     //titleEl.insertAdjacentHTML('beforeend',slide.title)
     
@@ -118,9 +100,7 @@ const slides = [
   */
   
   const slidesImages = document.querySelectorAll('.slider .images > img')
-  console.log(slidesImages);
-  
-  
+  // console.log(slidesImages);
   
   /* 
   BONUS 1:
@@ -160,23 +140,35 @@ const slides = [
   });  
 
   // intercept click on the next icon 
-  nextEl.addEventListener('click', nextElement)
+  //nextEl.addEventListener('click', nextElement)
 
-  prevEl.addEventListener('click', prevElement)
+  //prevEl.addEventListener('click', prevElement)
 
+  nextEl.addEventListener('click',timedScrollNext)
+  prevEl.addEventListener('click',timedScrollPrev);
+
+function timedScrollNext() {
+
+    setInterval(nextElement,1000);
+    
+}
+
+function timedScrollPrev() {
+    setInterval(prevElement,1000)
+}
   //prev and next function
 
   function nextElement(){
     console.log('cliccato su next');
     // select the current slide
-    const currentSlide = slidesImages[activeSlide]
-    console.log(currentSlide);
+    const currentSlide = slidesImages[activeSlide];
+    //console.log(currentSlide);
     // remove the active class from the current slide
     currentSlide.classList.remove('active')
     
     // select the active thumb
     const currentThumb = document.querySelector('.thumbnails > img.active')
-    console.log(currentThumb);
+    //console.log(currentThumb);
     // remove the active class from the active thumb
     currentThumb.classList.remove('active')
     
@@ -194,32 +186,31 @@ const slides = [
     
     // select the next slide
     const nextSlide = slidesImages[activeSlide]
-    console.log(nextSlide);
+    //console.log(nextSlide);
     // add the active class to the next slide
-    nextSlide.classList.add('active')
-    
+    nextSlide.classList.add('active');
     
     //TODO
     
     // select the next thumb
     const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
-    console.log(nextThumb);
+    //console.log(nextThumb);
     // add to the next thumb the active class
     nextThumb.classList.add('active')
 
   }
   
   function prevElement(){
-    console.log('cliccato su next');
+    //console.log('cliccato su next');
     // select the current slide
     const currentSlide = slidesImages[activeSlide]
-    console.log(currentSlide);
+    //console.log(currentSlide);
     // remove the active class from the current slide
     currentSlide.classList.remove('active')
     
     // select the active thumb
     const currentThumb = document.querySelector('.thumbnails > img.active')
-    console.log(currentThumb);
+    //console.log(currentThumb);
     // remove the active class from the active thumb
     currentThumb.classList.remove('active')
     
@@ -237,7 +228,7 @@ const slides = [
     
     // select the next slide
     const prevSlide = slidesImages[activeSlide];
-    console.log(prevSlide);
+    //console.log(prevSlide);
     // add the active class to the next slide
     prevSlide.classList.add('active')
     
@@ -246,7 +237,7 @@ const slides = [
     
     // select the next thumb
     const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
-    console.log(nextThumb);
+    //console.log(nextThumb);
     // add to the next thumb the active class
     nextThumb.classList.add('active')
 
