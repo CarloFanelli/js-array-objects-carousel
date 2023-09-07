@@ -81,11 +81,12 @@ const slides = [
 
     const titleEl = document.getElementById('imageTitle');
 
-    //const titleMarkup = `<h5 class="${activeSlide === slide.position ? 'title-active' : 'title'}>${slide.title}</h5>`
+    //const titleMarkup = `<h5 class="${activeSlide === slide.position ? "title-active" : "title"}>${slide.title}</h5>`
 
-   const titleMarkup = `<h5 class="title">${slide.title}</h5>`
+    console.log(activeSlide === slide.position ? "title-active" : "title");
 
-    
+    const titleMarkup = `<h5 class="title">${slide.title}</h5>`
+
     console.log(titleEl);
 
     titleEl.insertAdjacentHTML('beforeend',titleMarkup)
@@ -155,61 +156,8 @@ const slides = [
     //console.log(thumbMarkup);
   
     thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
-
-
     
-  });
-  
-  
-  
-  
-  
-  // intercept click on the next icon 
-  /* nextEl.addEventListener('click', function(){
-    console.log('cliccato su next');
-  
-    // select the current slide
-    const currentSlide = slidesImages[activeSlide]
-    console.log(currentSlide);
-    // remove the active class from the current slide
-    currentSlide.classList.remove('active')
-  
-    // select the active thumb
-    const currentThumb = document.querySelector('.thumbnails > img.active')
-    console.log(currentThumb);
-    // remove the active class from the active thumb
-    currentThumb.classList.remove('active')
-  
-    
-    // activeSlide = 4
-  
-    if (activeSlide === slidesImages.length - 1) {
-      activeSlide = 0
-      // activeSlide = 5
-    } else {
-      // increment the activeSlide of 1
-      activeSlide++
-    }
-  
-  
-    // select the next slide
-    const nextSlide = slidesImages[activeSlide]
-    console.log(nextSlide);
-    // add the active class to the next slide
-    nextSlide.classList.add('active')
-  
-  
-    //TODO
-  
-  
-    // select the next thumb
-    const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
-    console.log(nextThumb);
-    // add to the next thumb the active class
-    nextThumb.classList.add('active')
-  
-  
-  }) */
+  });  
 
   // intercept click on the next icon 
   nextEl.addEventListener('click', function(){
@@ -252,41 +200,49 @@ const slides = [
     console.log(nextThumb);
     // add to the next thumb the active class
     nextThumb.classList.add('active')
-    
-    
-  
+
   })
-  
-  // intercept click on the prev icon
-  
-  
-  // activeSlide = 0
-  prevEl.addEventListener('click', function () {
-    console.log('cliccato su prev');
-  
-  
+
+
+  prevEl.addEventListener('click', function(){
+    console.log('cliccato su next');
     // select the current slide
     const currentSlide = slidesImages[activeSlide]
     console.log(currentSlide);
     // remove the active class from the current slide
     currentSlide.classList.remove('active')
-  
+    
+    // select the active thumb
+    const currentThumb = document.querySelector('.thumbnails > img.active')
+    console.log(currentThumb);
+    // remove the active class from the active thumb
+    currentThumb.classList.remove('active')
+    
+    
+    // activeSlide = 4
+    
     if (activeSlide === 0) {
-      activeSlide = slidesImages.length - 1
-      // activeSlide = 5
-    } else {
-        // decrement the activeSlide of 1
-        activeSlide--
-    }
+        activeSlide = slidesImages.length - 1
+        // activeSlide = 5
+      } else {
+          // decrement the activeSlide of 1
+          activeSlide--
+      }
     
     
-    console.log(activeSlide);
-  
-  
     // select the next slide
-    const nextSlide = slidesImages[activeSlide]
-    console.log(nextSlide);
+    const prevSlide = slidesImages[activeSlide];
+    console.log(prevSlide);
     // add the active class to the next slide
-    nextSlide.classList.add('active')
+    prevSlide.classList.add('active')
+    
+    
+    //TODO
+    
+    // select the next thumb
+    const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
+    console.log(nextThumb);
+    // add to the next thumb the active class
+    nextThumb.classList.add('active')
+
   })
-  
