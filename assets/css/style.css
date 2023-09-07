@@ -113,3 +113,20 @@ img
 	height: calc(100% / 5);
 	object-fit: cover;
 }
+
+#imageTitle{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.title-active{
+    font-size: 4rem;
+    color: red;
+}
+
+.title{
+    font-size: 1.5rem;
+    color: black;
+}

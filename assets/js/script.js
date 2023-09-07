@@ -11,39 +11,38 @@ const slides2 = [
   
 const slides = [
     {
-        position : 1,
+        position : 0,
         url : './assets/img/01.webp',
         title : 'spiderman'
     },
     {
-        position : 2,
+        position : 1,
         url :'./assets/img/02.webp',
         title : 'topini'
     },
     {
-        position : 3,
+        position : 2,
         url :'./assets/img/03.webp',
         title : 'vari personaggi'
     },
     {
-        position : 4,
+        position : 3,
         url :'./assets/img/04.webp',
         title : 'un gatto'
     },
     {
-        position : 5,
+        position : 4,
         url :'./assets/img/05.webp',
         title : 'the avengers'
     },
 ]
 
-  let activeSlide = 1;
+  let activeSlide = 0;
   
   // select the dom elements
   const sliderImagesEl = document.querySelector('.slider .images')
   const prevEl = document.querySelector('.prev')
   const nextEl = document.querySelector('.next')
-const titleEl = document.querySelector('imageTitle')
   
   
   //console.log(sliderImagesEl);
@@ -62,6 +61,10 @@ const titleEl = document.querySelector('imageTitle')
     sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
   
   } */
+
+   const titleEl = document.getElementById('imageTitle');
+    
+    console.log(titleEl);
   
   slides.forEach(slide => {
 
@@ -75,6 +78,19 @@ const titleEl = document.querySelector('imageTitle')
     sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
 
     console.log(slide.url);
+
+    const titleEl = document.getElementById('imageTitle');
+
+    //const titleMarkup = `<h5 class="${activeSlide === slide.position ? 'title-active' : 'title'}>${slide.title}</h5>`
+
+   const titleMarkup = `<h5 class="title">${slide.title}</h5>`
+
+    
+    console.log(titleEl);
+
+    titleEl.insertAdjacentHTML('beforeend',titleMarkup)
+
+    //titleEl.insertAdjacentHTML('beforeend',slide.title)
     
   });
   
@@ -139,6 +155,8 @@ const titleEl = document.querySelector('imageTitle')
     //console.log(thumbMarkup);
   
     thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
+
+
     
   });
   
@@ -147,7 +165,7 @@ const titleEl = document.querySelector('imageTitle')
   
   
   // intercept click on the next icon 
-  nextEl.addEventListener('click', function(){
+  /* nextEl.addEventListener('click', function(){
     console.log('cliccato su next');
   
     // select the current slide
@@ -181,7 +199,7 @@ const titleEl = document.querySelector('imageTitle')
     nextSlide.classList.add('active')
   
   
-    /* TODO */
+    //TODO
   
   
     // select the next thumb
@@ -190,6 +208,52 @@ const titleEl = document.querySelector('imageTitle')
     // add to the next thumb the active class
     nextThumb.classList.add('active')
   
+  
+  }) */
+
+  // intercept click on the next icon 
+  nextEl.addEventListener('click', function(){
+    console.log('cliccato su next');
+    // select the current slide
+    const currentSlide = slidesImages[activeSlide]
+    console.log(currentSlide);
+    // remove the active class from the current slide
+    currentSlide.classList.remove('active')
+    
+    // select the active thumb
+    const currentThumb = document.querySelector('.thumbnails > img.active')
+    console.log(currentThumb);
+    // remove the active class from the active thumb
+    currentThumb.classList.remove('active')
+    
+    
+    // activeSlide = 4
+    
+    if (activeSlide === slidesImages.length - 1) {
+        activeSlide = 0
+        // activeSlide = 5
+    } else {
+        // increment the activeSlide of 1
+        activeSlide++
+    }
+    
+    
+    // select the next slide
+    const nextSlide = slidesImages[activeSlide]
+    console.log(nextSlide);
+    // add the active class to the next slide
+    nextSlide.classList.add('active')
+    
+    
+    //TODO
+    
+    // select the next thumb
+    const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
+    console.log(nextThumb);
+    // add to the next thumb the active class
+    nextThumb.classList.add('active')
+    
+    
   
   })
   
