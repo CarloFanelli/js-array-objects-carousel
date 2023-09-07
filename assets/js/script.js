@@ -160,7 +160,13 @@ const slides = [
   });  
 
   // intercept click on the next icon 
-  nextEl.addEventListener('click', function(){
+  nextEl.addEventListener('click', nextElement)
+
+  prevEl.addEventListener('click', prevElement)
+
+  //prev and next function
+
+  function nextElement(){
     console.log('cliccato su next');
     // select the current slide
     const currentSlide = slidesImages[activeSlide]
@@ -201,10 +207,9 @@ const slides = [
     // add to the next thumb the active class
     nextThumb.classList.add('active')
 
-  })
-
-
-  prevEl.addEventListener('click', function(){
+  }
+  
+  function prevElement(){
     console.log('cliccato su next');
     // select the current slide
     const currentSlide = slidesImages[activeSlide]
@@ -245,4 +250,4 @@ const slides = [
     // add to the next thumb the active class
     nextThumb.classList.add('active')
 
-  })
+  }
